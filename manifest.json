@@ -1,0 +1,10 @@
+{
+  "Name": "Wishing Well",
+  "Author": "a2937",
+  "Version": "1.0.0",
+  "Description": "Allows players to gain luck by providing coins to wells",
+  "UniqueID": "a2937.wishingwell",
+  "EntryDll": "WishingWell.dll",
+  "MinimumApiVersion": "4.0.0",
+  "UpdateKeys": []
+}
