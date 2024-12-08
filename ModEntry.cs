@@ -1,12 +1,7 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
-using StardewModdingAPI.Utilities;
 using StardewValley;
-using StardewValley.GameData.Locations;
-using StardewValley.TerrainFeatures;
-using xTile.Tiles;
 
 namespace WishingWell
 {
@@ -14,6 +9,7 @@ namespace WishingWell
     internal sealed class ModEntry : Mod
     {
         private bool isInWish = false;
+
         /*********
         ** Public methods
         *********/
@@ -22,6 +18,7 @@ namespace WishingWell
         public override void Entry(IModHelper helper)
         {
             helper.Events.Input.ButtonPressed += this.OnButtonPressed;
+
         }
 
 
@@ -44,10 +41,10 @@ namespace WishingWell
                 List<QuestionAnswer> ltAnswers = new List<QuestionAnswer>()
                 {
                     //The answers will be displayed in the order they are given here
-                    new QuestionAnswer("Grant wish", GrantWish),
-                    new QuestionAnswer("No", RemoveWishState)
+                    new QuestionAnswer(I18n.WishWell_AskGrantWish(), GrantWish),
+                    new QuestionAnswer(I18n.WishWell_DialogNo(), RemoveWishState)
                 };
-                QuestionDialogue dialogue = new QuestionDialogue("Hello! You have invoked the spirit of the water.\nDo you want to make a wish?", ltAnswers, 1000);
+                QuestionDialogue dialogue = new QuestionDialogue(I18n.WishWell_Greet(), ltAnswers, 1000);
             }
         }
 
@@ -60,7 +57,7 @@ namespace WishingWell
         {
             if (Game1.player.Money > 0)
             {
-                Game1.multipleDialogues(new String[] { "Thank you for the coin", "You are now luckier." });
+                Game1.multipleDialogues(new String[] { I18n.WishWell_WishRecieved() });
                 Game1.player.luckLevel.Value++;
                 Game1.player.health += 20;
                 Game1.player.stamina += 20;
@@ -71,7 +68,7 @@ namespace WishingWell
             }
             else if (Game1.player.Money == 0)
             {
-                Game1.multipleDialogues(new String[] { "You don't have a single cent on you.", "I will try to help you." });
+                Game1.multipleDialogues(new String[] { I18n.WishWell_NoMoney() });
                 Game1.player.health = Game1.player.maxHealth;
                 Game1.player.stamina = Game1.player.maxStamina.Value;
                 Game1.player.exhausted.Value = false;

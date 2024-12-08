@@ -1,0 +1,8 @@
+{
+  // example translations
+  "wish-well.ask-grant-wish": "Grant wish",
+  "wish-well.dialog-no": "No",
+  "wish-well.greet": "Hello! You have invoked the spirit of the water.\nDo you want to make a wish?",
+  "wish-well.wish-recieved": "You feel luckier.",
+  "wish-well.no-money": "The spirits are offering their aid."
+}
